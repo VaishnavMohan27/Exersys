@@ -6,7 +6,7 @@ if __name__ == '__main__':
     win.geometry("200x200")
     first_names=["Shivani","Vaishnav","Vishal","Micheal","Frodo"]
     last_names=["S","Mohan","DB","Scott","Baggins"]
-    numbers=[7676715534,7839345670,834659385,8843934983,9990433853]
+    numbers=["7676715534","7839345670","834659385","8843934983","9990433853"]
     def obtains():
         first_names.append(txt1.get())
         last_names.append(txt2.get())
@@ -29,14 +29,13 @@ if __name__ == '__main__':
         wind = Tk()
         wind.title("View contacts")
         wind.geometry("200x200")
-        height = 5
-        width = 5
         for i in range(len(first_names)):
-            b = Label(wind, text=first_names[i])
-            b.grid(row=i)
-            for j in range(len(numbers)):  # Columns
-                c= Label(wind,text=numbers[i])
-                c.grid(column=j)
+                b = Label(wind, text=first_names[i])
+                b.grid(row=i, column=0)
+                c=Label(wind,text=last_names[i])
+                c.grid(row=i,column=1)
+                d=Label(wind,text=numbers[i])
+                c.grid(row=i,column=2)
     bttn1=Button(win,text='Add a contact',fg='black',bg='white',command=entry)
     bttn1.grid()
     bttn2=Button(win,text='View existing contacts',fg='black',bg='white',command=viewer)
