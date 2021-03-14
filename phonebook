@@ -1,47 +1,45 @@
-#phonebook
 from tkinter import *
 import tksheet
-win=Tk()
-win.title("Phone book")
-win.geometry("200x200")
-first_names=["Shivani","Vaishnav","Vishal","Micheal","Frodo"]
-last_names=["S","Mohan","DB","Scott","Baggins"]
-numbers=[7676715534,7839345670,834659385,8843934983,9990433853]
-def entry():
-    win.withdraw()
-    wind=Tk()
-    wind.title("Add a contact")
-    wind.geometry("200x200")
-    w1=Label(wind,text="Enter their first name",fg='black')
-    w1.pack()
-    txt1=Entry(wind)
-    txt1.pack()
-    w3=Label(wind,text="Enter their last name",fg='black')
-    w3.pack()
-    txt3=Entry(wind)
-    txt3.pack()
-    w2=Label(wind,text="Enter their number",fg='black')
-    w2.pack()
-    txt2=Entry(wind)
-    txt2.pack()
-    bttnn=Button(wind,text='Confirm')
-    bttnn.pack()
-    def confirms():
+if __name__ == '__main__':
+    win=Tk()
+    win.title("Phone book")
+    win.geometry("200x200")
+    first_names=["Shivani","Vaishnav","Vishal","Micheal","Frodo"]
+    last_names=["S","Mohan","DB","Scott","Baggins"]
+    numbers=[7676715534,7839345670,834659385,8843934983,9990433853]
+    def obtains():
         first_names.append(txt1.get())
         last_names.append(txt2.get())
         numbers.append(int(txt3.get()))
-    confirms()
-def viewer():
-    import tksheet as tks
-    win.withdraw()
-    winds=Tk()
-    winds.title("View contacts")
-    winds.geometry("200X200")
-    sheet=tks.Sheet()
-    sheet.grid()
-bttn1=Button(win,text='Add a contact',fg='black',bg='white',command=entry)
-bttn1.pack()
-bttn2=Button(win,text='View existing contacts',fg='black',bg='white',command=viewer)
-bttn2.pack()
+    def entry():
+        win.withdraw()
+        wind=Tk()
+        wind.title("Add a contact")
+        wind.geometry("200x200")
+        w1=Label(wind,text="Enter their first name",fg='black')
+        w1.grid()
+        txt1=Entry(wind)
+        txt1.grid()
+        w3=Label(wind,text="Enter their last name",fg='black')
+        w3.grid()
+        txt3=Entry(wind)
+        txt3.grid()
+    def viewer():
+        win.withdraw()
+        wind = Tk()
+        wind.title("View contacts")
+        wind.geometry("200x200")
+        height = 5
+        width = 5
+        for i in range(len(first_names)):
+            b = Label(wind, text=first_names[i])
+            b.grid(row=i)
+            for j in range(len(numbers)):  # Columns
+                c= Label(wind,text=numbers[i])
+                c.grid(column=j)
+    bttn1=Button(win,text='Add a contact',fg='black',bg='white',command=entry)
+    bttn1.grid()
+    bttn2=Button(win,text='View existing contacts',fg='black',bg='white',command=viewer)
+    bttn2.grid()
 
-
+win.mainloop()
