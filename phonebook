@@ -1,5 +1,5 @@
 from tkinter import *
-import tksheet
+
 if __name__ == '__main__':
     win=Tk()
     win.title("Phone book")
@@ -35,7 +35,7 @@ if __name__ == '__main__':
                 c=Label(wind,text=last_names[i])
                 c.grid(row=i,column=1)
                 d=Label(wind,text=numbers[i])
-                c.grid(row=i,column=2)
+                d.grid(row=i,column=2)
     bttn1=Button(win,text='Add a contact',fg='black',bg='white',command=entry)
     bttn1.grid()
     bttn2=Button(win,text='View existing contacts',fg='black',bg='white',command=viewer)
