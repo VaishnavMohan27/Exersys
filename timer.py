@@ -7,8 +7,8 @@ from tkinter import messagebox
 root = Tk()
   
 # setting geometry of tk window
-root.geometry("300x250")
-  
+root.geometry("200x200")
+root.configure(background="black")
 # Using title() to display a message in
 # the dialogue box of the message in the
 # title bar.
@@ -25,17 +25,17 @@ minute.set("00")
 second.set("00")
   
 # Use of Entry class to take input from the user
-hourEntry= Entry(root, width=3, font=("Arial",18,""),
+hourEntry= Entry(root, width=3,bg="grey", font=("Arial",18,""),
                  textvariable=hour)
-hourEntry.place(x=80,y=20)
+hourEntry.place(x=30,y=20)
   
-minuteEntry= Entry(root, width=3, font=("Arial",18,""),
+minuteEntry= Entry(root, width=3,bg="grey", font=("Arial",18,""),
                    textvariable=minute)
-minuteEntry.place(x=130,y=20)
+minuteEntry.place(x=80,y=20)
   
-secondEntry= Entry(root, width=3, font=("Arial",18,""),
+secondEntry= Entry(root, width=3,bg="grey", font=("Arial",18,""),
                    textvariable=second)
-secondEntry.place(x=180,y=20)
+secondEntry.place(x=130,y=20)
   
   
 def submit():
@@ -81,11 +81,12 @@ def submit():
         temp -= 1
  
 # button widget
-btn = Button(root, text='Set Time Countdown', bd='5',
+btn = Button(root, text='Set Time Countdown',bg="red3", bd='10',
              command= submit)
-btn.place(x = 70,y = 120)
+btn.place(x = 40,y = 90)
   
 # infinite loop which is required to
 # run tkinter program infinitely
 # until an interrupt occurs
 root.mainloop()
+
