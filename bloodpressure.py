@@ -18,25 +18,27 @@ def see_bp(a=""):
         messagebox.showinfo("Result","Please enter valid data!")
     else:    
 
-        if sbp in range(90,120) and dbp in range(60,80):
+        if 90 < sbp <= 120 or 60 < dbp <= 80:
             res = "Your blood pressure is normal"
-            messagebox.showinfo("Result",res)
-        elif sbp in range(120,130):
+            messagebox.showinfo("result",res)
+        elif 120 < sbp < 130 or 80 < dbp <= 85:
             res = "Your blood pressure is slightly elevated"
             messagebox.showinfo("result",res)
-        elif sbp in range(130,140) and dbp in range(80,90):
+        elif 130 <= sbp < 140 or 85 < dbp < 90:
             res = "Stage 1 hypertension. Remember to take care of your body!"
             messagebox.showinfo("result",res)
-        elif sbp in range(140,150) and dbp in range(90,120):
+        elif 140 <= sbp < 150 or 90 <= dbp < 120:
             res = "Stage 2 hypertension. Cut back on the sodium and exercise!"
             messagebox.showinfo("result",res)
-        elif sbp >= 150 and dbp >= 120:
+        elif sbp >= 150 or dbp >= 120:
             res = "Hypertensive crisis.Call 911!"
             messagebox.showinfo("result",res)    
-        else:
-            sbp <= 90  and dbp < 60
+        elif sbp <= 90 or dbp <= 60:
             res = "Low blood pressure.Call 911!"
-            messagebox.showinfo("result",res)    
+            messagebox.showinfo("result",res)
+        else:
+            res = "enter valid data"
+            messagebox.showinfo("result",res)
 
 if __name__ == '__main__':
     TOP = Tk()
