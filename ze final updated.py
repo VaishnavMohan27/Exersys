@@ -1,5 +1,4 @@
-
-    #main window
+#main window
 from tkinter import *
 import random
 from tkinter import messagebox
@@ -22,8 +21,7 @@ if __name__ == '__main__':
     timer=Frame(root)
     pedometer=Frame(root)
     phonebook=Frame(root)
-    calculator=Frame(root)
-    for frame in (main_window,sugar_monitor,bp_monitor,movie_quote,heart_rate,health_tip,bmi,tic_tac,random_workout,timer,pedometer,phonebook,calculator):
+    for frame in (main_window,sugar_monitor,bp_monitor,movie_quote,heart_rate,health_tip,bmi,tic_tac,random_workout,timer,pedometer,phonebook):
         frame.grid(row=2000, column=2000,sticky="news")
     change_frame(main_window)
     button101=Button(main_window,text="Welcome to exersys", command=lambda:change_frame(bmi))
@@ -543,30 +541,20 @@ if __name__ == '__main__':
     ENTRY2 = Entry(heart_rate)
     ENTRY2.place(x=65, y=35)
     LABLE3 = Label(heart_rate, bg="white", text="condition:")
-    LABLE3.place(x=30, y=65)
+    LABLE3.place(x=20, y=65)
     ENTRY3 = Entry(heart_rate)
     ENTRY3.place(x=65, y=65)
     BUTTON = Button(heart_rate,bg="white",text="Heart rate",command=check_heartrate)
     BUTTON.place(x=55,y=85)
     
-    prev_btn9 = Button(heart_rate, text="Prev", command=lambda: change_frame(sugar_monitor))
+    prev_btn8 = Button(heart_rate, text="Prev", command=lambda: change_frame(sugar_monitor))
 
-    prev_btn9.grid()
-    next_btn9= Button(heart_rate, text="Next", command=lambda: change_frame(pedometer))
-    next_btn9.grid()
-
-    #pedometer
-    import pandas as ps
-    import csv
-    label1=Label(pedometer,text="Compare your weight and steps walked to find the calories burnt")
-    label1.place(x=90,y=90)
-    filesss = ps.read_csv('pedometer.csv')
-    print(filesss)
-    prev_btn8= Button(pedometer, text="Prev", command=lambda: change_frame(heart_rate))
     prev_btn8.grid()
-    next_btn8= Button(pedometer, text="Next", command=lambda: change_frame(phonebook))
+    next_btn8= Button(heart_rate, text="Next", command=lambda: change_frame(phonebook))
     next_btn8.grid()
 
+   
+    
     #phonebook
     first_names = ["Shivani", "Vaishnav", "Vishal", "Micheal", "Frodo"]
     last_names = ["S", "Mohan", "DB", "Scott", "Baggins"]
@@ -611,10 +599,10 @@ if __name__ == '__main__':
     bttn8.grid()
     bttn82 = Button(phonebook, text='View existing contacts', fg='black', bg='white', command=viewer)
     bttn82.grid()
-    prev_btn10 = Button(phonebook, text="Prev", command=lambda: change_frame(pedometer))
-    prev_btn10.grid()
-    next_btn10= Button(phonebook, text="Next", command=lambda: change_frame(timer))
-    next_btn10.grid()
+    prev_btn9 = Button(phonebook, text="Prev", command=lambda: change_frame(heart_rate))
+    prev_btn9.grid()
+    next_btn9= Button(phonebook, text="Next", command=lambda: change_frame(timer))
+    next_btn9.grid()
 
     #timer
     import time
@@ -661,113 +649,23 @@ if __name__ == '__main__':
             temp -= 1
     btn11= Button(timer, text='Set Time Countdown',bg="red3", command= submit)
     btn11.place(x = 40,y = 90)
-    prev_btn11= Button(timer, text="Prev", command=lambda: change_frame(phonebook))
+    prev_btn10= Button(timer, text="Prev", command=lambda: change_frame(phonebook))
+    prev_btn10.grid()
+    next_btn10= Button(timer, text="next", command=lambda: change_frame(pedometer))
+    next_btn10.grid()
+
+
+    #pedometer
+    import pandas as ps
+    import csv
+    label1=Label(pedometer,text="Compare your weight and steps walked to find the calories burnt")
+    label1.place(x=90,y=90)
+    filesss = ps.read_csv('pedometer.csv')
+    print(filesss)
+    prev_btn11= Button(pedometer, text="Prev", command=lambda: change_frame(timer))
     prev_btn11.grid()
-    next_btn11 = Button(timer, text="Next", command=lambda: change_frame(calculator))
-    next_btn11.grid()
-
-    #calculator
-    # 'btn_click' function :
-    # This Function continuously updates the
-    # input field whenever you enters a number
-
-    def btn_click(item):
-        global expression
-        expression = expression + str(item)
-        input_text.set(expression)
-
-    def bt_clear():
-        global expression
-        expression = ""
-        input_text.set("")
-
-    def bt_equal():
-        global expression
-        result = str(eval(expression))  # 'eval':This function is used to evaluates the string expression directly
-        input_text.set(result)
-        expression = ""
-
-    expression = ""
-
-    # 'StringVar()' :It is used to get the instance of input field
-
-    input_text = StringVar()
-
-
-    input_frame = Frame(calculator, highlightbackground="black")
-
-    input_frame.pack(side=TOP)
-
-    # Let us create a input field inside the 'Frame'
-
-    input_field = Entry(input_frame, textvariable=input_text, width=35, bg="#eee",
-                        justify=LEFT)
-
-    input_field.grid(row=0, column=0)
-
-    input_field.pack(ipady=5)  # 'ipady' is internal padding to increase the height of input field
-
-    # Let us creating another 'Frame' for the button below the 'input_frame'
-
-    btns_frame = Frame(calculator, bg="grey")
-
-    btns_frame.pack()
-
-    clear = Button(btns_frame, text="AC", fg="black", width=21, height=2, bg="#eee", cursor="hand2",
-                   command=lambda: bt_clear()).grid(row=0, column=0, columnspan=3, padx=1, pady=1)
-
-    divide = Button(btns_frame, text="/", fg="black", width=6, height=2, bg="#eee", cursor="hand2",
-                    command=lambda: btn_click("/")).grid(row=3, column=3, padx=1, pady=1)
-
-    seven = Button(btns_frame, text="7", fg="black", width=6, height=2, bg="#fff", cursor="hand2",
-                   command=lambda: btn_click(7)).grid(row=1, column=0, padx=1, pady=1)
-
-    eight = Button(btns_frame, text="8", fg="black", width=6, height=2, bg="#fff", cursor="hand2",
-                   command=lambda: btn_click(8)).grid(row=1, column=1, padx=1, pady=1)
-
-    nine = Button(btns_frame, text="9", fg="black", width=6, height=2, bg="#fff", cursor="hand2",
-                  command=lambda: btn_click(9)).grid(row=1, column=2, padx=1, pady=1)
-
-    multiply = Button(btns_frame, text="*", fg="black", width=6, height=2, bg="#eee", cursor="hand2",
-                      command=lambda: btn_click("*")).grid(row=2, column=3, padx=1, pady=1)
-
-    four = Button(btns_frame, text="4", fg="black", width=6, height=2, bg="#fff", cursor="hand2",
-                  command=lambda: btn_click(4)).grid(row=2, column=0, padx=1, pady=1)
-
-    five = Button(btns_frame, text="5", fg="black", width=6, height=2, bg="#fff", cursor="hand2",
-                  command=lambda: btn_click(5)).grid(row=2, column=1, padx=1, pady=1)
-
-    six = Button(btns_frame, text="6", fg="black", width=6, height=2, bg="#fff", cursor="hand2",
-                 command=lambda: btn_click(6)).grid(row=2, column=2, padx=1, pady=1)
-
-    minus = Button(btns_frame, text="-", fg="black", width=6, height=2, bg="#eee", cursor="hand2",
-                   command=lambda: btn_click("-")).grid(row=1, column=3, padx=1, pady=1)
-
-    one = Button(btns_frame, text="1", fg="black", width=6, height=2, bg="#fff", cursor="hand2",
-                 command=lambda: btn_click(1)).grid(row=3, column=0, padx=1, pady=1)
-
-    two = Button(btns_frame, text="2", fg="black", width=6, height=2, bg="#fff", cursor="hand2",
-                 command=lambda: btn_click(2)).grid(row=3, column=1, padx=1, pady=1)
-
-    three = Button(btns_frame, text="3", fg="black", width=6, height=2, bg="#fff", cursor="hand2",
-                   command=lambda: btn_click(3)).grid(row=3, column=2, padx=1, pady=1)
-
-    plus = Button(btns_frame, text="+", fg="black", width=6, height=2, bg="#eee", cursor="hand2",
-                  command=lambda: btn_click("+")).grid(row=0, column=3, padx=1, pady=1)
-
-    zero = Button(btns_frame, text="0", fg="black", width=13, height=2, bg="#fff", cursor="hand2",
-                  command=lambda: btn_click(0)).grid(row=4, column=0, columnspan=2, padx=1, pady=1)
-
-    point = Button(btns_frame, text=".", fg="black", width=6, height=2, bg="#eee", cursor="hand2",
-                   command=lambda: btn_click(".")).grid(row=4, column=2, padx=1, pady=1)
-
-    equals = Button(btns_frame, text="=", fg="black", width=6, height=2, bg="#eee", cursor="hand2",
-                    command=lambda: bt_equal()).grid(row=4, column=3, padx=1, pady=1)
-    prev_btn12= Button(calculator, text="Prev", command=lambda: change_frame(timer))
-    prev_btn12.grid()
-
 root.mainloop()
-
+ 
 
 
 
