@@ -336,7 +336,7 @@ if __name__ == '__main__':
                 button[i].append(j) 
                 get_t = partial(get_text_pc, i, j, game_board, l1, l2) 
                 button[i][j] = Button( 
-                    game_board, bd=5, command=get_t, height=5, width=10)
+                    game_board, bd=5, fg="red", bg="yellow", command=get_t, height=5, width=10)
                 button[i][j].grid(row=m, column=n, sticky ="nesw") 
         game_board.mainloop() 
       
