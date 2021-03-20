@@ -1,4 +1,4 @@
-from tkinter import *
+
 import time
 
 WIDTH =  300
@@ -6,9 +6,7 @@ HEIGHT = 300
 
 xVelocity = 4
 yVelocity = 4
-window = Tk()
-
-canvas = Canvas(window,width=WIDTH,height=HEIGHT)
+canvas = Canvas(main_window,width=WIDTH,height=HEIGHT)
 canvas.pack()
 
 background_photo = PhotoImage(file='blue.png')
@@ -28,7 +26,6 @@ while True:
     if(coordinates[1]>=(HEIGHT-image_height) or coordinates[1]<0):
         yVelocity = -yVelocity
     canvas.move(my_image,xVelocity,yVelocity)
-    window.update()
+    main_window.update()
     time.sleep(0.01)
 
-window.mainloop()
