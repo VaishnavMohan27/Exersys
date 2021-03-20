@@ -27,6 +27,38 @@ if __name__ == '__main__':
     change_frame(main_window)
     button101=Button(main_window,text="Welcome to exersys", command=lambda:change_frame(bmi))
     button101.place(x=45,y=45)
+    
+    #animation
+    import time
+
+    WIDTH =  300
+    HEIGHT = 300
+
+    xVelocity = 4
+    yVelocity = 4
+    canvas = Canvas(main_window,width=WIDTH,height=HEIGHT)
+    canvas.pack()
+
+    background_photo = PhotoImage(file='blue.png')
+    background = canvas.create_image(0,0,image=background_photo,anchor=NW)
+
+    photo_image = PhotoImage(file='ttl.png')
+    my_image = canvas.create_image(0,0,image=photo_image,anchor=NW)
+
+    image_width = photo_image.width()
+    image_height = photo_image.height()
+
+    while True:
+        coordinates = canvas.coords(my_image)
+        print(coordinates)
+        if(coordinates[0]>=(WIDTH-image_width) or coordinates[0]<0):
+            xVelocity = -xVelocity
+        if(coordinates[1]>=(HEIGHT-image_height) or coordinates[1]<0):
+            yVelocity = -yVelocity
+        canvas.move(my_image,xVelocity,yVelocity)
+        main_window.update()
+        time.sleep(0.01)
+
     #bmi calculator
     def get_height():
         height = float(ENTRY12.get())
