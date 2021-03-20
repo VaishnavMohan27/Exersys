@@ -759,6 +759,8 @@ if __name__ == '__main__':
 
     equals = Button(btns_frame, text="=", fg="black", width=6, height=2, bg="#eee", cursor="hand2",
                     command=lambda: bt_equal()).grid(row=4, column=3, padx=1, pady=1)
+    prev_btn11= Button(calculator, text="Prev", command=lambda: change_frame(timer))
+    prev_btn11.grid()
 
 
 root.mainloop()
