@@ -42,7 +42,7 @@ if __name__ == '__main__':
             bmi = weight / (height ** 2)
         except ZeroDivisionError:
             messagebox.showinfo("Result", "Please enter positive height!!")
-        except Var:
+        except ValueError:
             messagebox.showinfo("Result", "Please enter valid data!")
         else:
             if bmi <= 15.0:
