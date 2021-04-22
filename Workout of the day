@@ -1,4 +1,4 @@
-l =  ['15 Lunges and 20 Pushups ',  
+workouts =  ['15 Lunges and 20 Pushups ',  
       
     '20 Russian Twists and 1 minute Plank', 
            
@@ -24,10 +24,14 @@ gui=Tk()
 gui.title("Workout Generator")
 gui.geometry("200x200")
 def printer():
-    var=StringVar()
-    var.set(random.choice(l))
-    w2=Label(gui,textvariable=var, fg='red', bg='white')
+    var2=StringVar()
+    var2.set(random.choice(workouts))
+    var3=StringVar()
+    var3.set(random.choice(workouts))
+    w2=Label(gui,textvariable=var2, fg='red', bg='white')
+    w3=Label(gui,textvariable=var3, fg='red', bg='white')
     w2.pack()
+    w3.pack()
 btn=Button(gui,text="Your Workout", fg='blue', bg='white', command=printer)   
 btn.pack()
 
