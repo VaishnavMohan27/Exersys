@@ -1,1 +1,1 @@
-# CS-MiniProject-Team-12-
+Entry for CS Mini Project
